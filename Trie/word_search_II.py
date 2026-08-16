@@ -11,7 +11,8 @@ class TrieNode:
 
 
 class Solution:
-    def insert(self, root, word):
+    @staticmethod
+    def insert(root, word):
         crawl = root
         for ch in word:
             _idx = ord(ch) - ord('a')
@@ -56,8 +57,8 @@ class Solution:
 
     def find_word(self, board, words):
         result = []
-        r = len(board)
-        c = len(board[0])
+        row = len(board)
+        column = len(board[0])
 
         # Build Trie
         root = TrieNode()
@@ -65,8 +66,8 @@ class Solution:
             self.insert(root, word)
 
         # Search for word in board
-        for i in range(r):
-            for j in range(c):
+        for i in range(row):
+            for j in range(column):
                 ch = board[i][j]
                 idx = ord(ch) - ord('a')
                 if root.children[idx] is not None:
